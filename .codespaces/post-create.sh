@@ -119,5 +119,20 @@ if [ -n "$ADO_PAT" ]; then
 fi
 
 mkdir ~/CEDev
+cp ~/ado-in-codespaces/.codespaces/appsettings.json ~/CEDev
+
+if [ -n "$DEVELOPER_ALIAS" ]; then
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
+else
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"`git config user.name`\"/" ~/CEDev/appsettings.json
+fi
+
+if [ -n "$TUNNEL_KEY" ]; then
+  sed -i "s/\"tunnelRelayPrimaryAuthKey\": \"\"/\"tunnelRelayPrimaryAuthKey\": \"$TUNNEL_KEY\"/" ~/CEDev/appsettings.json
+fi
+
+if [ -n "$APP_SECRET" ]; then
+  sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
+fi
 
 dotnet restore

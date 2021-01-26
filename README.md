@@ -11,7 +11,12 @@
     * Name: `ADO_PAT` _:warning: Warning: the name must be called `ADO_PAT` for the init scripts to work!_
     * Value: Paste in the generated PAT
     * Repository access: `vsls-contrib/vscs-in-codespaces` (or if you are using a fork, select your fork)
-    
+1. You may also add secrets to fill in certain values in the Codespace's appsettings.json, which is used for the devstamp when running the frontend and backend services.
+    * Add a secret with name `TUNNEL_KEY` and enter the value of "tunnelRelayPrimaryAuthKey" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
+    * Add a secret with name `APP_SECRET` and enter the value of "appServicePrincipalClientSecret" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
+    * Add a secret with name `DEVELOPER_ALIAS` and enter the value of "developerAlias" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
+        * If you don't add a `DEVELOPER_ALIAS` secret, your git username will be used by default, however this will cause an error with your relay tunnel if your git username does not match the alias you used in your relay tunnel hybrid URL
+
 That's it, you're ready to start creating Codespaces! :rocket:
 
 ## Create a Codespace
@@ -29,19 +34,12 @@ That's it, you're ready to start creating Codespaces! :rocket:
 :warning: Warning: Launching Frontend + Backend services only works in desktop Codespaces (in the VS Code extension). The bug in web Codespaces is being tracked here [#1836](https://github.com/microsoft/vssaas-planning/issues/1836)
 
 :warning: Warning: Ngrok is not currently configured in this Codespace, so you should use your devstamp tunnel Azure Relay url instead, which you can set up using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel)
-1. A CEDev directory will have been generated automatically for your appsettings.json. Run the following commands in the VS Code terminal
-```
-cd ~/CEDev
-code appsettings.json
-```
-and paste in your appsettings.json. Make sure you've added the `"developerAlias": "<alias>"` property to appsettings.json with your alias. Without this, running the services in a Codespace will try to create resources with the `codespace` username, causing an error.
-
-![image](https://user-images.githubusercontent.com/33612256/102140759-bf5e2280-3e2d-11eb-8290-b8ee45e9844f.png)
+1. If you didn't add the necessary secrets as described in the **One-time setup** section, you can manually edit your appsettings.json in the ~/CEDev directory. Otherwise, continue with step 2.
 
 2. Open the vscs-services.code-workspace workspace.
 ![image](https://user-images.githubusercontent.com/33612256/102133534-3e9a2900-3e23-11eb-9cfa-31bf294b78e8.png)
 
-3. Open the Run tab.
+3. Open the Run tab (the play button in the left margin).
 
 4. Select and run Launch FrontEnd + Backend Web APIs (Workspace), or you can run the (No Build) option if you've already built.
 ![image](https://user-images.githubusercontent.com/33612256/102133636-67bab980-3e23-11eb-846d-831e2496c0ad.png)
@@ -49,12 +47,10 @@ and paste in your appsettings.json. Make sure you've added the `"developerAlias"
 5. You can now use your devstamp as usual, setting the endpoint on your local .cloudenv-settings.json to your integrated dev tunnel URL, opening a new VS Code window, and creating Codespaces in your dev stamp on the old VS Codespaces extension.
 
 ## Known Issues and Planned Improvements
-* The backend service may crash the first time running it in a new Codespace. Suspending and resuming the Codespace usually resolves this, but we will continue to track the issue here [#1888](https://github.com/microsoft/vssaas-planning/issues/1888)
+* The backend service crashes sometimes. This seems to be an issue with the debugger, so running the services without the debugger (Ctrl + F5) should prevent this error. Please comment on this issue if the services continue to crash while running without the debugger [#1888](https://github.com/microsoft/vssaas-planning/issues/1888)
 
 ![image](https://user-images.githubusercontent.com/33612256/102268767-b3d03180-3ee9-11eb-8d95-96f1860fcea7.png)
 
 * As mentioned above, launching Frontend + Backend services only works in desktop Codespaces (in the VS Code extension). The bug in web Codespaces is being tracked here [#1836](https://github.com/microsoft/vssaas-planning/issues/1836)
-
-* Automatically create an appsettings.json with default values, allowing users to pass in values like developerAlias as Codespace secrets [#1887](https://github.com/microsoft/vssaas-planning/issues/1887)
 
 * Though you are able to use git normally with vsclk-core in this Codespace, you will see branches from both vscs-in-codespaces (this GitHub repository) and vsclk-core. We will remove the vscs-in-codespaces branches so you'll only see the vsclk-core branches. [#1889](https://github.com/microsoft/vssaas-planning/issues/1889)
