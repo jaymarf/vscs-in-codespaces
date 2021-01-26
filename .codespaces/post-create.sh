@@ -119,12 +119,13 @@ if [ -n "$ADO_PAT" ]; then
 fi
 
 mkdir ~/CEDev
-cp ~/ado-in-codespaces/.codespaces/appsettings.json ~/CEDev
+cp ~/ado-in-codespaces/.codespaces/CEDev/* ~/CEDev
+GITHUB_USERNAME=`git config user.name`
 
 if [ -n "$DEVELOPER_ALIAS" ]; then
   sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
 else
-  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"`git config user.name`\"/" ~/CEDev/appsettings.json
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
 fi
 
 if [ -n "$TUNNEL_KEY" ]; then
@@ -133,6 +134,12 @@ fi
 
 if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
+fi
+
+sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
+
+if [ -n "$CODESPACES_TOKEN" ]; then
+  sed -i "s/\"token\": \"\"/\"token\": \"$CODESPACES_TOKEN\"/" ~/CEDev/testsettings.json
 fi
 
 dotnet restore
