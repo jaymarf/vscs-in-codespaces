@@ -1,3 +1,15 @@
+# add libssl
+echo "deb http://security.debian.org/debian-security jessie/updates main" | sudo tee -a /etc/apt/sources.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9D6D8F6BC857C906
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
+sudo apt-get update -y
+sudo apt-get install -y --no-install-recommends libssl1.0.0
+
+# add dotnet sdk v3.1.404
+curl -SL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.404/dotnet-sdk-3.1.404-linux-x64.tar.gz --output dotnet.tar.gz
+tar -zxf dotnet.tar.gz -C /home/codespace/.dotnet --skip-old-files
+rm dotnet.tar.gz
+
 # add oh-my-bash
 wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O - | sh -C
 
@@ -105,3 +117,22 @@ fi
 if [ -n "$ADO_PAT" ]; then
   ./init
 fi
+
+mkdir ~/CEDev
+cp ~/ado-in-codespaces/.codespaces/appsettings.json ~/CEDev
+
+if [ -n "$DEVELOPER_ALIAS" ]; then
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
+else
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"`git config user.name`\"/" ~/CEDev/appsettings.json
+fi
+
+if [ -n "$TUNNEL_KEY" ]; then
+  sed -i "s/\"tunnelRelayPrimaryAuthKey\": \"\"/\"tunnelRelayPrimaryAuthKey\": \"$TUNNEL_KEY\"/" ~/CEDev/appsettings.json
+fi
+
+if [ -n "$APP_SECRET" ]; then
+  sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
+fi
+
+dotnet restore
