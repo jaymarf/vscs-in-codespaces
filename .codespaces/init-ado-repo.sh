@@ -279,4 +279,6 @@ if [ -f $USER_POST_CREATE_COMMAND_FILE ]; then
     . $USER_POST_CREATE_COMMAND_FILE
 fi
 
-exec bash
+if [ -z "$NONINTERACTIVE" ]; then
+    exec bash
+fi
