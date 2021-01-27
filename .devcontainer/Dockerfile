@@ -9,6 +9,12 @@ RUN sudo curl -SL $DOTNET_SDK_DOWNLOAD_URL --output dotnet.tar.gz \
     && sudo tar -zxf dotnet.tar.gz -C /home/codespace/.dotnet --skip-old-files \
     && sudo rm dotnet.tar.gz
     
+RUN echo "deb http://security.debian.org/debian-security jessie/updates main" | sudo tee -a /etc/apt/sources.list
+    && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9D6D8F6BC857C906
+    && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
+    && sudo apt-get update -y
+    && sudo apt-get install -y --no-install-recommends libssl1.0.0
+    
 # Enable detection of running in a container
 ENV DOTNET_RUNNING_IN_CONTAINER=true \
     # Enable correct mode for dotnet watch (only mode supported in a container)
