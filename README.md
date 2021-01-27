@@ -1,4 +1,7 @@
 # vsclk-core in Codespaces
+
+> _Please file an issue with the `dogfooding: vscs` tag in `microsoft/vssaas-planning` and tag [Aaron Paskin](https://github.com/anpaskin) with any issues._
+
 ## One-time setup
 1. If you do not have write-access to the `vsls-contrib/vscs-in-codespaces` repo, go ahead and fork it now
 1. Go to https://dev.azure.com/devdiv/_usersSettings/tokens and generate a Personal Access Token that will be used to clone the repo where the Codespaces extension lives
