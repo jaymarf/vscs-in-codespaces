@@ -1,6 +1,6 @@
 # Agent Development _in Codespaces_
 
-> _Please file an issue and tag [Josh Spicer](https://github.com/joshspicer) with any issues._
+> _Please file an issue with the `dogfooding: agent dev in vscs` in `microsoft/vssaas-planning` and tag [Josh Spicer](https://github.com/joshspicer) with any issues._
 
 ## Getting Started
 
