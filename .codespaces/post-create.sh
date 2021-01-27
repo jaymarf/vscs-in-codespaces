@@ -99,10 +99,12 @@ export PATH=$PATH:~/workspace/vscs-in-codespaces/.codespaces
 # Git Defaults
 git config --global pull.rebase false
 
-# Copy appsettings.json template to ~/CEDev where it's expected to be.
+# Copy appsettings.json and testsettings.json templates to ~/CEDev where it's expected to be.
 # Pre-populate it with environment variables if they've been supplied.
 mkdir ~/CEDev
-cp /home/codespace/workspace/vscs-in-codespaces/.codespaces/appsettings.json ~/CEDev
+cp ~/ado-in-codespaces/.codespaces/CEDev/* ~/CEDev
+GITHUB_USERNAME=`git config user.name`
+
 if [ -n "$DEVELOPER_ALIAS" ]; then
   sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
 fi
@@ -113,6 +115,12 @@ fi
 
 if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
+fi
+
+sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
+
+if [ -n "$CODESPACES_TOKEN" ]; then
+  sed -i "s/\"token\": \"\"/\"token\": \"$CODESPACES_TOKEN\"/" ~/CEDev/testsettings.json
 fi
 
 # Show hint of how to proceed on first launch
