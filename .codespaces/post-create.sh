@@ -1,16 +1,11 @@
 echo "post-create running.."
 
 # add libssl
-echo "deb http://security.debian.org/debian-security jessie/updates main" | sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9D6D8F6BC857C906
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
-sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends libssl1.0.0
-
-# add dotnet sdk v3.1.404
-# curl -SL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.404/dotnet-sdk-3.1.404-linux-x64.tar.gz --output dotnet.tar.gz
-# tar -zxf dotnet.tar.gz -C /home/codespace/.dotnet --skip-old-files
-# rm dotnet.tar.gz
+# echo "deb http://security.debian.org/debian-security jessie/updates main" | sudo tee -a /etc/apt/sources.list
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9D6D8F6BC857C906
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
+# sudo apt-get update -y
+# sudo apt-get install -y --no-install-recommends libssl1.0.0
 
 # add oh-my-bash
 wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O - | sh -C
