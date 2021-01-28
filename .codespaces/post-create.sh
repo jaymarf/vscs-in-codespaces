@@ -1,17 +1,5 @@
 echo "post-create running.."
 
-# add libssl
-echo "deb http://security.debian.org/debian-security jessie/updates main" | sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9D6D8F6BC857C906
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
-sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends libssl1.0.0
-
-# add dotnet sdk v3.1.404
-curl -SL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.404/dotnet-sdk-3.1.404-linux-x64.tar.gz --output dotnet.tar.gz
-tar -zxf dotnet.tar.gz -C /home/codespace/.dotnet --skip-old-files
-rm dotnet.tar.gz
-
 # add oh-my-bash
 wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O - | sh -C
 
@@ -99,10 +87,12 @@ export PATH=$PATH:~/workspace/vscs-in-codespaces/.codespaces
 # Git Defaults
 git config --global pull.rebase false
 
-# Copy appsettings.json template to ~/CEDev where it's expected to be.
+# Copy appsettings.json and testsettings.json templates to ~/CEDev where it's expected to be.
 # Pre-populate it with environment variables if they've been supplied.
 mkdir ~/CEDev
-cp /home/codespace/workspace/vscs-in-codespaces/.codespaces/appsettings.json ~/CEDev
+cp ~/workspace/vscs-in-codespaces/.codespaces/CEDev/* ~/CEDev
+GITHUB_USERNAME=`git config user.name`
+
 if [ -n "$DEVELOPER_ALIAS" ]; then
   sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
 fi
@@ -113,6 +103,14 @@ fi
 
 if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
+else
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
+fi
+
+sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
+
+if [ -n "$CODESPACES_TOKEN" ]; then
+  sed -i "s/\"token\": \"\"/\"token\": \"$CODESPACES_TOKEN\"/" ~/CEDev/testsettings.json
 fi
 
 # Show hint of how to proceed on first launch
