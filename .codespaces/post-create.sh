@@ -95,6 +95,8 @@ GITHUB_USERNAME=`git config user.name`
 
 if [ -n "$DEVELOPER_ALIAS" ]; then
   sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
+else
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
 fi
 
 if [ -n "$TUNNEL_KEY" ]; then
@@ -103,8 +105,6 @@ fi
 
 if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
-else
-  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
 fi
 
 sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
