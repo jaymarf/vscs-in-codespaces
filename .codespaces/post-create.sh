@@ -90,7 +90,7 @@ git config --global pull.rebase false
 # Copy appsettings.json and testsettings.json templates to ~/CEDev where it's expected to be.
 # Pre-populate it with environment variables if they've been supplied.
 mkdir ~/CEDev
-cp ~/ado-in-codespaces/.codespaces/CEDev/* ~/CEDev
+cp ~/workspace/vscs-in-codespaces/.codespaces/CEDev/* ~/CEDev
 GITHUB_USERNAME=`git config user.name`
 
 if [ -n "$DEVELOPER_ALIAS" ]; then
