@@ -103,6 +103,8 @@ fi
 
 if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
+else
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
 fi
 
 sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
