@@ -3,7 +3,7 @@
 > _Please file an issue with the `dogfooding: vscs` tag in `microsoft/vssaas-planning` and tag [Aaron Paskin](https://github.com/anpaskin) and [Josh Spicer](https://github.com/joshspicer) with any issues._
 
 ## One-time setup
-1. If you do not have write-access to the `vsls-contrib/vscs-in-codespaces` repo, go ahead and fork it now
+1. If you do not have write-access to the `vsls-contrib/vscs-in-codespaces` repo, request it. Forking is an option, but you'd need to update your fork when changes are made in this branch.
 1. Go to https://dev.azure.com/devdiv/_usersSettings/tokens and generate a Personal Access Token that will be used to clone the repo where the Codespaces extension lives
 1. Click `New Token` and select the following settings:
     * `Organization: All accessible organizations`
@@ -19,7 +19,7 @@
     * Add a secret with name `APP_SECRET` and enter the value of "appServicePrincipalClientSecret" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
     * Add a secret with name `DEVELOPER_ALIAS` and enter the value of "developerAlias" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
         * If you don't add a `DEVELOPER_ALIAS` secret, your git username will be used by default, however this will cause an error with your relay tunnel if your git username does not match the alias you used in your relay tunnel hybrid URL
-    * Add a secret with name `CODESPACES_TOKEN` and enter an access token to automatically use it in your Codespace's testsettings.json. To get an access token in VS Code, run the `Codespaces: Get Access Token` command. Make sure you run the GitHub Codespaces extension's command (`github.codespaces.getAccessToken`, not `codespaces.getAccessToken`).
+    * Add a secret with name `CODESPACES_TOKEN` and enter an access token to automatically use it in your Codespace's testsettings.json. To get an access token in VS Code, run the `Codespaces: Get Access Token` command. Make sure you run the GitHub Codespaces extension's command (`github.codespaces.getAccessToken`, not `codespaces.getAccessToken`). Note for `github.codespaces.getAccessToken` to work, you will need *"isInternal": true* flag in %UserProfile%\codespaces-settings.json
     
 ![image](https://user-images.githubusercontent.com/33612256/105910562-fbb0a100-5fdd-11eb-9878-31d30b215689.png)
 
