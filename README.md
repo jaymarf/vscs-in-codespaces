@@ -7,8 +7,7 @@ Welcome to VSCS in Codespaces! Here you can open any ADO repository in a GitHub 
 - Portal: https://github.com/vsls-contrib/vscs-in-codespaces/tree/portal
 - Codespaces extension: https://github.com/vsls-contrib/vscs-in-codespaces/tree/codespaces-extension
 - LiveShare extension: https://github.com/vsls-contrib/vscs-in-codespaces/tree/liveshare-extension
-- Codespaces service (vsclk-core): https://github.com/vsls-contrib/vscs-in-codespaces/tree/codespaces-service
-- Agent (Cascade+vsclk-core): https://github.com/vsls-contrib/vscs-in-codespaces/tree/cascade-agent-cli
+- Codespaces service + VMAgent (vsclk-core + cascade): https://github.com/vsls-contrib/vscs-in-codespaces/tree/codespaces-service
 
 ## Open Any ADO Repo In Codespaces
 
