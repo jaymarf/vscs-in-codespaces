@@ -1,20 +1,24 @@
 {
 	"$schema": "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/configuration-editing/schemas/devContainer.schema.json",
-	"name": "vsclk-core in GitHub Codespaces",
+	"name": "Agent development in GitHub Codespaces",
 	// "image": "ghcr.io/vsls-contrib/vscs-in-codespaces:vsclk-core",
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"omnisharp.defaultLaunchSolution": "VSOnline.sln",
+		"omnisharp.projectLoadTimeout": 300
 	},
 	"extensions": [
 		"ms-dotnettools.csharp"
 	],
+	"dockerFile" : "Dockerfile",
 	"containerEnv": {
-		"ADO_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/OnlineServices/_git/vsclk-core"
+        "VSCLK_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/OnlineServices/_git/vsclk-core",
+        "CASCADE_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/DevDiv/_git/Cascade"
 	},
 	/*
 	 * Please don't change! create your own `post-create-command.sh`
 	 * file in this folder instead, it will be called automatically
 	 * once the Codespace is fully set up.
 	 */
-	"postCreateCommand": "/bin/sh .codespaces/post-create.sh",
+	"postCreateCommand": "/bin/bash .codespaces/post-create.sh"
 }

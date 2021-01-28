@@ -1,14 +1,4 @@
-# add libssl
-echo "deb http://security.debian.org/debian-security jessie/updates main" | sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9D6D8F6BC857C906
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
-sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends libssl1.0.0
-
-# add dotnet sdk v3.1.404
-curl -SL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.404/dotnet-sdk-3.1.404-linux-x64.tar.gz --output dotnet.tar.gz
-tar -zxf dotnet.tar.gz -C /home/codespace/.dotnet --skip-old-files
-rm dotnet.tar.gz
+echo "post-create running.."
 
 # add oh-my-bash
 wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O - | sh -C
@@ -67,9 +57,7 @@ export PALETTE_RESET='\e[0m'
 
 # workspace
 export CODESPACE_ROOT=$(pwd)
-export CODESPACE_DEFAULT_PATH="\$CODESPACE_ROOT\$ADO_REPO_DEFAULT_PATH"
 alias cdroot='cd \$CODESPACE_ROOT'
-alias cddefault='cd \$CODESPACE_DEFAULT_PATH'
 alias ya='yarn'
 # misc
 code()
@@ -87,44 +75,28 @@ alias refresh='exec bash'
 alias bashconfig=\"code $BASH_RC_FILE\"
 alias nugetconfig=\"code ~/.nuget/NuGet/NuGet.Config\"
 alias ports='lsof -n -i -P | grep TCP'
-# git
-alias push='git push -u azdo HEAD'
-alias pull='git pull azdo'
-alias sync='pull && push'
-alias fetch='git fetch azdo'
-alias pullmaster='git pull azdo master'
-alias branch='f() {
-    BRANCH_NAME=\"dev/\$AZ_DO_USERNAME/\$1\";
-    git pull azdo master:main --no-tags;
-    git branch \$BRANCH_NAME main --color;
-    git checkout \$BRANCH_NAME;
-    git push -u azdo \$BRANCH_NAME;
-};f'
 
-# change dir to the repo default folder if present (codespace is initialized),
-# otherwise show the hint
-if ! [ -z \$CODESPACE_DEFAULT_PATH ] 2> /dev/null && [ -d \$CODESPACE_DEFAULT_PATH ]; then
-  cd \$CODESPACE_DEFAULT_PATH
-elif [ \$(basename \"\$0\") != 'init' ]
-then
-  clear
-  echo -e \"\$PALETTE_DIM\n💡  Run\$PALETTE_BLUE ./init\$PALETTE_RESET\$PALETTE_DIM when ready.\n\$PALETTE_RESET\"
+if [ -f ~/.cs-environment ]; then
+    source ~/.cs-environment
 fi
+
+export PATH=$PATH:~/workspace/vscs-in-codespaces/.codespaces
 
 " >> $BASH_RC_FILE
 
-# Run the init script if ADO_PAT is already defined via secrets
-if [ -n "$ADO_PAT" ]; then
-  ./init
-fi
+# Git Defaults
+git config --global pull.rebase false
 
+# Copy appsettings.json and testsettings.json templates to ~/CEDev where it's expected to be.
+# Pre-populate it with environment variables if they've been supplied.
 mkdir ~/CEDev
-cp ~/ado-in-codespaces/.codespaces/appsettings.json ~/CEDev
+cp ~/workspace/vscs-in-codespaces/.codespaces/CEDev/* ~/CEDev
+GITHUB_USERNAME=`git config user.name`
 
 if [ -n "$DEVELOPER_ALIAS" ]; then
   sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
 else
-  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"`git config user.name`\"/" ~/CEDev/appsettings.json
+  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
 fi
 
 if [ -n "$TUNNEL_KEY" ]; then
@@ -135,4 +107,19 @@ if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
 fi
 
-dotnet restore
+sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
+
+if [ -n "$CODESPACES_TOKEN" ]; then
+  sed -i "s/\"token\": \"\"/\"token\": \"$CODESPACES_TOKEN\"/" ~/CEDev/testsettings.json
+fi
+
+# Show hint of how to proceed on first launch
+if [ ! -f ~/.cs-environment ]; then
+  clear
+  echo -e "💡 Open$PALETTE_BOLD agent-development.code-workspace$PALETTE_RESET and select$PALETTE_BOLD OPEN WORKSPACE$PALETTE_RESET once all repos are cloned.$PALETTE_RESET \n$PALETTE_RESET"
+fi
+
+# Run the init script if ADO_PAT is already defined via GH secrets
+if [ -n "$ADO_PAT" ]; then
+  source .codespaces/init_repos.sh
+fi
