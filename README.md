@@ -91,7 +91,8 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 
 4. You can now use your devstamp as usual. See the [E2E devstamp wiki](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md) for how to use your devstamp.
 
-> Note: The Diagnostics server will be started, but not launch automatically. Simply click the toast msg or launch from your "ports" menu.
+> Note: The React **Diagnostics server** will be started, but will not open a new tab automatically. Simply click the toast msg or launch the service running on port 59330 from your "ports" menu.
+> 
 > ![8](images/8.png)
 > ![9](images/9.png)
 
