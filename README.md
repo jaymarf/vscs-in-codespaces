@@ -75,7 +75,7 @@ Wait until all projects are loaded in the Omnisharp logs (If there is an error, 
 
 ![source-control](images/source-control.png)
 
-The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and can still be accessed via your terminal at `~/workspace/vscs-in-codespaces/.codespaces`.  The `.codespaces` directory is added to your `$PATH`, letting you run any scripts in that directory from your terminal.
+The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and can still be accessed via your terminal at `~/workspace/vscs-in-codespaces/.codespaces`.  The `.codespaces` directory is added to your `$PATH`, letting you run any of our pre-build scripts in that directory from your terminal.
 
 
 ## Running the Frontend and Backend Services
@@ -90,6 +90,11 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 ![image](https://user-images.githubusercontent.com/33612256/102133636-67bab980-3e23-11eb-846d-831e2496c0ad.png)
 
 4. You can now use your devstamp as usual. See the [E2E devstamp wiki](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md) for how to use your devstamp.
+
+> Note: The Diagnostics server will be started, but not launch automatically. Simply click the toast msg or launch from your "ports" menu.
+> ![8](images/8.png)
+> ![9](images/9.png)
+
 
 ## Deploying a Custom Agent
 
