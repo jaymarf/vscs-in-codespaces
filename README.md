@@ -99,7 +99,7 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 
 ## Deploying a Custom Agent
 
-You can run the `deploy-custom-agent.sh` script (on your `$PATH`, source [here](https://github.com/vsls-contrib/vscs-in-codespaces/blob/cascade-agent-cli/.codespaces/deploy-custom-agent.sh)) which will:
+You can run the `deploy-custom-agent.sh` script (on your `$PATH`, source [here](https://github.com/vsls-contrib/vscs-in-codespaces/edit/codespaces-service/.codespaces/deploy-custom-agent.sh)) which will:
 
 1. Build Cascade
 2. Build Vsclk-Core
