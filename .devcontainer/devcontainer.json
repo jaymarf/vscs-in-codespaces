@@ -12,8 +12,8 @@
 	],
 	"dockerFile" : "Dockerfile",
 	"containerEnv": {
-        "VSCLK_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/OnlineServices/_git/vsclk-core",
-        "CASCADE_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/DevDiv/_git/Cascade"
+		"VSCLK_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/OnlineServices/_git/vsclk-core",
+		"CASCADE_REPO_URL": "https://devdiv.visualstudio.com/DefaultCollection/DevDiv/_git/Cascade"
 	},
 	/*
 	 * Please don't change! create your own `post-create-command.sh`
