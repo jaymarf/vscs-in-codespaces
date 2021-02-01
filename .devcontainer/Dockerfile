@@ -28,7 +28,7 @@ ENV DOTNET_RUNNING_IN_CONTAINER=true \
 ENV RestoreUseSkipNonexistentTargets false
 
 # Docker-in-docker setup
-COPY .codespaces/docker-in-docker-debian.sh /tmp/library-scripts/
+COPY library-scripts/docker-in-docker-debian.sh /tmp/library-scripts/
 RUN apt-get update \
     # Use Docker script from script library to set things up
     && /bin/bash /tmp/library-scripts/docker-in-docker-debian.sh \
