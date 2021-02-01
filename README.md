@@ -4,7 +4,7 @@
 
 ## One-time setup
 1. If you do not have write-access to the `vsls-contrib/vscs-in-codespaces` repo, request it. Forking is an option, but you'd need to update your fork when changes are made in this branch.
-1. Go to https://dev.azure.com/devdiv/_usersSettings/tokens and generate a Personal Access Token that will be used to clone the repo where the Codespaces extension lives
+1. Go to https://dev.azure.com/devdiv/_usersSettings/tokens and generate a Personal Access Token that will be used to clone the vsclk-core and Cascade repos.
 1. Click `New Token` and select the following settings:
     * `Organization: All accessible organizations`
     * `Scope: Code Read & Write`
