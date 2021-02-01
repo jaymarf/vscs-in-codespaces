@@ -26,3 +26,19 @@ ENV DOTNET_RUNNING_IN_CONTAINER=true \
 # all errors when attempting to restore a project are ignored and treated as warnings instead. This allows the VS
 # tooling to use -nowarn:MSB3202 to ignore issues with the .dcproj project
 ENV RestoreUseSkipNonexistentTargets false
+
+# Docker-in-docker setup
+COPY .codespaces/docker-in-docker-debian.sh /tmp/library-scripts/
+RUN apt-get update \
+    # Use Docker script from script library to set things up
+    && /bin/bash /tmp/library-scripts/docker-in-docker-debian.sh \
+    # Clean up
+    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
+
+VOLUME [ "/var/lib/docker" ]
+
+# Setting the ENTRYPOINT to docker-init.sh will start up the Docker Engine 
+# inside the container "overrideCommand": false is set in devcontainer.json. 
+# The script will also execute CMD if you need to alter startup behaviors.
+ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
+CMD [ "sleep", "infinity" ]

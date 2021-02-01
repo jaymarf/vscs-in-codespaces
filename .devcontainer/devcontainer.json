@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/configuration-editing/schemas/devContainer.schema.json",
-	"name": "Agent development in GitHub Codespaces",
+	"name": "Codespace Development in GitHub Codespaces",
 	// "image": "ghcr.io/vsls-contrib/vscs-in-codespaces:vsclk-core",
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
