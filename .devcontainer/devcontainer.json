@@ -5,7 +5,21 @@
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"omnisharp.defaultLaunchSolution": "VSOnline.sln",
-		"omnisharp.projectLoadTimeout": 300
+		"omnisharp.projectLoadTimeout": 300,
+		"remote.portAttributes" : [
+			{
+				"port": "59330",
+				"label" "Diagnostics Server"
+			},
+			{
+				"port": "53760",
+				"label": "Frontend Service",	
+			},
+			{
+				"port": "59228",
+				"label" "Backend Service"
+			}
+		]
 	},
 	"extensions": [
 		"ms-dotnettools.csharp"
