@@ -29,11 +29,11 @@ ENV RestoreUseSkipNonexistentTargets false
 
 # Docker-in-docker setup
 COPY library-scripts/docker-in-docker-debian.sh /tmp/library-scripts/
-RUN apt-get update \
+RUN sudo apt-get update \
     # Use Docker script from script library to set things up
-    && /bin/bash /tmp/library-scripts/docker-in-docker-debian.sh \
+    && sudo /bin/bash /tmp/library-scripts/docker-in-docker-debian.sh \
     # Clean up
-    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
+    && sudo apt-get autoremove -y && sudo apt-get clean -y && sudo rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
 VOLUME [ "/var/lib/docker" ]
 
