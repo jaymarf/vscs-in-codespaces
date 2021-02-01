@@ -9,15 +9,15 @@
 		"remote.portAttributes" : [
 			{
 				"port": "59330",
-				"label" "Diagnostics Server"
+				"label": "Diagnostics Server"
 			},
 			{
 				"port": "53760",
-				"label": "Frontend Service",	
+				"label": "Frontend Service"	
 			},
 			{
 				"port": "59228",
-				"label" "Backend Service"
+				"label": "Backend Service"
 			}
 		]
 	},
