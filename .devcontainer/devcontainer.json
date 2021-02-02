@@ -1,25 +1,22 @@
 {
 	"$schema": "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/configuration-editing/schemas/devContainer.schema.json",
-	"name": "Agent development in GitHub Codespaces",
-	// "image": "ghcr.io/vsls-contrib/vscs-in-codespaces:vsclk-core",
+	"name": "Codespaces development in GitHub Codespaces",
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"omnisharp.defaultLaunchSolution": "VSOnline.sln",
 		"omnisharp.projectLoadTimeout": 300,
-		"remote.portAttributes" : [
-			{
-				"port": "59330",
-				"label": "Diagnostics Server"
+		"remote.portAttributes" : {
+			"59330": {
+				"label": "Diagnostics Server",
+				"onAutoForward": "openBrowser"
 			},
-			{
-				"port": "53760",
+			"53760": {
 				"label": "Frontend Service"	
 			},
-			{
-				"port": "59228",
+			"59228": {
 				"label": "Backend Service"
 			}
-		]
+		}
 	},
 	"extensions": [
 		"ms-dotnettools.csharp"
