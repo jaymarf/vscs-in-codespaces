@@ -1,7 +1,8 @@
 {
 	"$schema": "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/configuration-editing/schemas/devContainer.schema.json",
-	"name": "Agent development in GitHub Codespaces",
-	// "image": "ghcr.io/vsls-contrib/vscs-in-codespaces:vsclk-core",
+	"name": "Codespaces Development in GitHub Codespaces",
+	"runArgs": ["--init", "--privileged"],
+	"overrideCommand": false,
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"omnisharp.defaultLaunchSolution": "VSOnline.sln",

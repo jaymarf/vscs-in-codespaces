@@ -2,6 +2,8 @@
 
 #ERROR_STR=" See /tmp/deploy-custom-agent.log for info"
 
+set -e
+
 function check_err {
     if [ $? -ne 0 ]; then
     echo "⚠ Could not $1. Please try this step manually."
@@ -12,7 +14,8 @@ function check_err {
 if [[ $1 != "--no-build" ]]; then
     pushd $CASCADE_ROOT
     echo "🚀 Building your AGENT changes..."
-    dotnet build $CASCADE_ROOT/src/VSOnline > /tmp/cascade-build-log.txt
+    dotnet clean $CASCADE_ROOT/src/VSOnline > /tmp/cascade-build-log.txt
+    dotnet build $CASCADE_ROOT/src/VSOnline >> /tmp/cascade-build-log.txt
     check_err "build agent (log: /tmp/cascade-build-log.txt)"
 
     pushd $VSCLK_ROOT
@@ -35,3 +38,5 @@ dotnet $VSCLK_ROOT/bin/debug/VsoUtil/VsoUtil.dll preparedevcli -c $ARTIFACTS_PAT
 check_err "upload artifacts with VsoUtil.dll"
 
 echo "🎉 Artifacts with ID=$ARTIFACTS_ID have been uploaded."
+
+set +e
