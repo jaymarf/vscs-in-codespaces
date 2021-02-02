@@ -5,13 +5,13 @@
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"omnisharp.defaultLaunchSolution": "VSOnline.sln",
 		"omnisharp.projectLoadTimeout": 300,
-		"remote.portAttributes" : {
+		"remote.portsAttributes": {
 			"59330": {
 				"label": "Diagnostics Server",
 				"onAutoForward": "openBrowser"
 			},
 			"53760": {
-				"label": "Frontend Service"	
+				"label": "Frontend Service"
 			},
 			"59228": {
 				"label": "Backend Service"
