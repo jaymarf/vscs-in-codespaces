@@ -39,7 +39,7 @@ That's it, you're ready to start creating Codespaces! :rocket:
 > 
 > ![3](images/3.png)
 
-4. **AFTER** the initialization script completes, open `agent-development.code-workspace` from the file explorer and select `OPEN WORKSPACE` (or click the workspace pop-up that will automatically appear).
+4. **AFTER** the initialization script completes, open `codespaces-service.code-workspace` from the file explorer and select `OPEN WORKSPACE` (or click the workspace pop-up that will automatically appear).
 
 ### Organization
 
