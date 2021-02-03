@@ -1,15 +1,19 @@
 {
-    "folders": [
-      {
-        "name": "VSOnline",
-        "path": "./cascade/src/VSOnline"
-      },
-      {
-        "name": "vsclk-core",
-        "path": "./vsclk-core"
-      },
-      {
-        "path": "."
-      }
-    ]
+  "folders": [
+    {
+      "name": "VSOnline",
+      "path": "./cascade/src/VSOnline"
+    },
+    {
+      "name": "vsclk-core",
+      "path": "./vsclk-core"
+    },
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "omnisharp.defaultLaunchSolution": "./vscs-in-codespaces.sln",
+    "omnisharp.projectLoadTimeout": 600
   }
+}

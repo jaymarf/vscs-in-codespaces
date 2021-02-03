@@ -57,7 +57,7 @@ This will give you a clean workspace organized like:
 
 This will recursively pull in the workspace and `.vscode` config for each of the repos. This will also populate the "Run" with the relevant launch commands.
 
-![1](images/1.png)
+![image](https://user-images.githubusercontent.com/33612256/106797794-f07af800-6611-11eb-9634-c960e3706636.png)
 
 5. In the C# extension settings, ensure that Omnisharp: Project Load Timeout is > 200.
 
@@ -78,7 +78,9 @@ Wait until all projects are loaded in the Omnisharp logs (If there is an error, 
 The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and can still be accessed via your terminal at `~/workspace/vscs-in-codespaces/.codespaces`.  The `.codespaces` directory is added to your `$PATH`, letting you run any of our pre-build scripts in that directory from your terminal.
 
 
-## Running the Frontend and Backend Services
+## Running Your Devstamp
+
+It is recommended to run your devstamp from this Codespace on web rather than desktop, as you'll need your local VS Code instance pointing to your devstamp to create devstamp Codespaces.
 
 :warning: Warning: Ngrok is not currently configured in this Codespace, so you should use your devstamp tunnel Azure Relay url instead, which you can set up using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel)
 
@@ -86,8 +88,9 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 
 2. Open the Run tab (the play button in the left margin).
 
-3. Select and run Launch FrontEnd + Backend Web APIs (Workspace), or you can run the (No Build) option if you've already built.
-![image](https://user-images.githubusercontent.com/33612256/102133636-67bab980-3e23-11eb-846d-831e2496c0ad.png)
+3. Select and run FrontEnd+Backend API Launch.
+
+![image](https://user-images.githubusercontent.com/33612256/106797794-f07af800-6611-11eb-9634-c960e3706636.png)
 
 4. You can now use your devstamp as usual. See the [E2E devstamp wiki](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md) for how to use your devstamp.
 
