@@ -17,8 +17,7 @@
 1. You may also add secrets to fill in certain values in the Codespace's appsettings.json, which is used for the devstamp when running the frontend and backend services.
     * Add a secret with name `TUNNEL_KEY` and enter the value of "tunnelRelayPrimaryAuthKey" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
     * Add a secret with name `APP_SECRET` and enter the value of "appServicePrincipalClientSecret" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
-    * Add a secret with name `DEVELOPER_ALIAS` and enter the value of "developerAlias" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
-        * If you don't add a `DEVELOPER_ALIAS` secret, your git username will be used by default, however this will cause an error with your relay tunnel if your git username does not match the alias you used in your relay tunnel hybrid URL
+    * Add a secret with name `DEVELOPER_ALIAS` and enter the value you want to use for "developerAlias" in appsettings.json and "userId" in testsettings.json. Since the latter should be a GitHub account username, it is recommended to use your GitHub username for this value. You can always directly edit either of these files if you'd like to use another value.
     * Add a secret with name `CODESPACES_TOKEN` and enter an access token to automatically use it in your Codespace's testsettings.json. To get an access token in VS Code, run the `Codespaces: Get Access Token` command. Make sure you run the GitHub Codespaces extension's command (`github.codespaces.getAccessToken`, not `codespaces.getAccessToken`). Note for `github.codespaces.getAccessToken` to work, you will need *"isInternal": true* flag in %UserProfile%\codespaces-settings.json
     
 ![image](https://user-images.githubusercontent.com/33612256/105910562-fbb0a100-5fdd-11eb-9878-31d30b215689.png)
