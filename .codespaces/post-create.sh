@@ -91,12 +91,10 @@ git config --global pull.rebase false
 # Pre-populate it with environment variables if they've been supplied.
 mkdir ~/CEDev
 cp ~/workspace/vscs-in-codespaces/.codespaces/CEDev/* ~/CEDev
-GITHUB_USERNAME=`git config user.name`
 
 if [ -n "$DEVELOPER_ALIAS" ]; then
   sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/appsettings.json
-else
-  sed -i "s/\"developerAlias\": \"\"/\"developerAlias\": \"$GITHUB_USERNAME\"/" ~/CEDev/appsettings.json
+  sed -i "s/\"userId\": \"\"/\"userId\": \"$DEVELOPER_ALIAS\"/" ~/CEDev/testsettings.json
 fi
 
 if [ -n "$TUNNEL_KEY" ]; then
@@ -107,8 +105,6 @@ if [ -n "$APP_SECRET" ]; then
   sed -i "s|\"appServicePrincipalClientSecret\": \"\"|\"appServicePrincipalClientSecret\": \"$APP_SECRET\"|" ~/CEDev/appsettings.json
 fi
 
-sed -i "s/\"userId\": \"\"/\"userId\": \"$GITHUB_USERNAME\"/" ~/CEDev/testsettings.json
-
 if [ -n "$CODESPACES_TOKEN" ]; then
   sed -i "s/\"token\": \"\"/\"token\": \"$CODESPACES_TOKEN\"/" ~/CEDev/testsettings.json
 fi
@@ -116,7 +112,7 @@ fi
 # Show hint of how to proceed on first launch
 if [ ! -f ~/.cs-environment ]; then
   clear
-  echo -e "💡 Open$PALETTE_BOLD agent-development.code-workspace$PALETTE_RESET and select$PALETTE_BOLD OPEN WORKSPACE$PALETTE_RESET once all repos are cloned.$PALETTE_RESET \n$PALETTE_RESET"
+  echo -e "💡 Open$PALETTE_BOLD codespaces-service.code-workspace$PALETTE_RESET and select$PALETTE_BOLD OPEN WORKSPACE$PALETTE_RESET once all repos are cloned.$PALETTE_RESET \n$PALETTE_RESET"
 fi
 
 # Run the init script if ADO_PAT is already defined via GH secrets
