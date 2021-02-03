@@ -87,6 +87,7 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 2. Open the Run tab (the play button in the left margin).
 
 3. Select and run FrontEnd+Backend API Launch.
+
 ![image](https://user-images.githubusercontent.com/33612256/106797794-f07af800-6611-11eb-9634-c960e3706636.png)
 
 4. You can now use your devstamp as usual. See the [E2E devstamp wiki](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md) for how to use your devstamp.
