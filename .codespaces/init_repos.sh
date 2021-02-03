@@ -127,6 +127,8 @@ echo -e "export ADO_PAT_BASE64=$ADO_PAT_BASE64" >> ~/.cs-environment
 ./.codespaces/setup-cascade.sh "force"
 # VSclk
 ./.codespaces/setup-vsclk.sh "force"
+# Create common sln file so you don't have to switch between solutions when working on different repos.
+./.codespaces/generate-common-sln.sh
 
   echo -e "💡 $PALETTE_BOLD$PALETTE_GREEN Cloning finished!  \n$PALETTE_RESET    Open$PALETTE_BOLD agent-development.code-workspace$PALETTE_RESET and select$PALETTE_BOLD OPEN WORKSPACE$PALETTE_RESET.$PALETTE_RESET \n$PALETTE_RESET"
 
