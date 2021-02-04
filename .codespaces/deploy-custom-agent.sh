@@ -39,4 +39,8 @@ check_err "upload artifacts with VsoUtil.dll"
 
 echo "🎉 Artifacts with ID=$ARTIFACTS_ID have been uploaded."
 
+echo "🚀 Disabling \"autoUploadLocalVMAgents\" in appsettings.json..."
+sed -i "s|\"autoUploadLocalVMAgents\": true|\"autoUploadLocalVMAgents\": false|" ~/CEDev/appsettings.json
+echo "🎉 Disabled \"autoUploadLocalVMAgents\" in appsettings.json."
+
 set +e
