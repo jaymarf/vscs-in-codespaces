@@ -87,7 +87,7 @@ It is recommended to run your devstamp from this Codespace on web rather than de
 
 2. Open the Run tab (the play button in the left margin).
 
-3. Select and run FrontEnd+Backend API Launch.
+3. Select and run FrontEnd+Backend API Launch (or the (No Build) option if you've already build the frontend and backend services, either manually or with a previous devstamp run).
 
 ![image](https://user-images.githubusercontent.com/33612256/106797794-f07af800-6611-11eb-9634-c960e3706636.png)
 
