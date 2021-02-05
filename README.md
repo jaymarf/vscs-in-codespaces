@@ -80,6 +80,22 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 
 ## Running Your Devstamp in vscs-in-codespaces
 
+These steps outline how to set up and run your devstamp from your vscs-in-codespaces Codespace. If you've used devstamp before, you may have already completed some of these steps. You may skip whichever steps you've already completed.
+
+1. Recommended: Connect to your vscs-in-codespaces Codespace on web by going to github.com/codespaces and selecting your Codespace.
+   * You can run your devstamp from desktop VS Code, but you'll need to use a separate VS Code instance with different settings to create Codespaces that point to your devstamp (and thus have your changes). This might accidentally mess up the settings for your initial VS Code instance where you're running your devstamp.
+1. Set up your RelayTunnel hybrid URL using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel).
+1. If you didn't add the necessary secrets as described in the **One-time setup** section, open ~/CEDev/appsettings.json. The terminal `code` command doesn't work in Codespaces ([issue](https://github.com/microsoft/vssaas-planning/issues/1920)), so the easiest way to open this file is to hit ctrl + p, type ~/CEDev/appsettings.json and select the file in the dropdown. Set the following values if they are not set:
+   * `"developerAlias": {alias}`, where `alias` is the alias you used in your RelayTunnel hybrid URL (`https://codespaces.servicebus.windows.net/{alias}`)
+   * `"appServicePrincipalClientSecret": ******`. where `******` is the value of the `app-sp-password` secret in the [`vsclk-online-dev-kv`](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/resource/subscriptions/86642df6-843e-4610-a956-fdd497102261/resourceGroups/vsclk-online-dev/providers/Microsoft.KeyVault/vaults/vsclk-online-dev-kv/secrets) KeyVault.
+1. If you are testing a Cascade repo change (in the VSOnline folder of your Codespace), run `deploy-custom-agent.sh` in the VS Code terminal to build and upload an image with your changes for the devstamp to use. You can read more about what this script does in the [**Deploying a Custom Agent**](https://github.com/vsls-contrib/vscs-in-codespaces/blob/codespaces-service/README.md#deploying-a-custom-agent) section below.
+1. Open the Run tab (the play button in the left margin) and select FrontEnd+Backend API Launch in the dropdown (or the (No Build) option if you've already built the frontend and backend services, either manually or with a previous devstamp run). For best results, run the services without debugging by hitting ctrl + F5. If you need debugging you may try to run the services by clicking the green play button next to the task name in the Run tab, however you will likely get exceptions. See the [dogfooding/devstamp discussion](https://github.com/microsoft/vssaas-planning/discussions/2548), where we are tracking debugger in Codespaces issues.
+   * If you are running the services with the prelaunch build (the task without (No Build)), the task may take a minute or two to launch. Once it starts, you will see the prelaunch build task begin with restores in your terminal ![image](https://user-images.githubusercontent.com/33612256/107100380-05e65280-67c9-11eb-872e-5253828d3b49.png).
+1. On your local machine (NOT in your Codespace), create a file called `codespaces-settings.json` in `C:\Users\{your Windows username}` if on Windows or `~` if on Mac. Add the following to your `codespaces-settings.json` file: ![image](https://user-images.githubusercontent.com/33612256/107099925-ce2adb00-67c7-11eb-9327-bff04598ec9d.png)
+This will tell your local VS Code instance to point to your devstamp so you can create Codespaces with your changes. See the [**Configure your VSCode endpoint**](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md#configure-your-vscode-endpoint) section for more info on the `codespaces-settings.json`, including how to configure it tell VS Code to point to dev or ppe.
+
+
+
 It is recommended to run your devstamp from this Codespace on web rather than desktop, as you'll need your local VS Code instance pointing to your devstamp to create devstamp Codespaces.
 
 :warning: Ngrok is not currently configured in this Codespace, so you should use your devstamp tunnel Azure Relay url instead, which you can set up using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel)
@@ -117,7 +133,7 @@ The output will look similar to this:
 ![5](images/5.png)
 ![7](images/7.png)
 
-Your appsettings.json file in `~/CEDEev` will be updated with the correct values.
+Your appsettings.json file in `~/CEDEev` will be updated with the correct values and `"autoUploadLocalVMAgents"` set to false.
 
 ## Running E2E Raw API Tests
 
