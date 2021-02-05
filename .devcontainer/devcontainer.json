@@ -9,7 +9,9 @@
 		"omnisharp.projectLoadTimeout": 300
 	},
 	"extensions": [
-		"ms-dotnettools.csharp"
+		"ms-dotnettools.csharp",
+		"fernandoescolar.vscode-solution-explorer",
+		"formulahendry.dotnet-test-explorer"
 	],
 	"dockerFile" : "Dockerfile",
 	"containerEnv": {
