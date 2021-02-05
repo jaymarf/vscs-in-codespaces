@@ -1,4 +1,4 @@
-# vsclk-core in Codespaces
+# Codespaces Services in Codespaces
 
 > _Please file an issue with the `dogfooding: vscs` tag in `microsoft/vssaas-planning` and tag [Aaron Paskin](https://github.com/anpaskin) and [Josh Spicer](https://github.com/joshspicer) with any issues._
 
@@ -17,7 +17,8 @@
 1. You may also add secrets to fill in certain values in the Codespace's appsettings.json, which is used for the devstamp when running the frontend and backend services.
     * Add a secret with name `TUNNEL_KEY` and enter the value of "tunnelRelayPrimaryAuthKey" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
     * Add a secret with name `APP_SECRET` and enter the value of "appServicePrincipalClientSecret" from your local appsettings.json to automatically use it in your Codespace's appsettings.json
-    * Add a secret with name `DEVELOPER_ALIAS` and enter the value you want to use for "developerAlias" in appsettings.json and "userId" in testsettings.json. Since the latter should be a GitHub account username, it is recommended to use your GitHub username for this value. You can always directly edit either of these files if you'd like to use another value.
+    * Add a secret with name `DEVELOPER_ALIAS` and enter the value you want to use for "developerAlias" in appsettings.json. Make sure you use the alias used in your devstamp DBs (cloud-environments-{alias}) and RelayTunnel hybrid URL (https://codespaces.servicebus.windows.net/{alias}), otherwise you will have to create a new hybrid URL and copy over plans and config to new devstamp DBs.
+      * This `DEVELOPER_ALIAS` value will also be used as the "userId" in testsettings.json. "userId" needs to be your GitHub account username. If your devstamp developer alias and your GitHub username don't match, you can manually edit ~/CEDev/testsettings.json to set "userId" to your GitHub username.
     * Add a secret with name `CODESPACES_TOKEN` and enter an access token to automatically use it in your Codespace's testsettings.json. To get an access token in VS Code, run the `Codespaces: Get Access Token` command. Make sure you run the GitHub Codespaces extension's command (`github.codespaces.getAccessToken`, not `codespaces.getAccessToken`). Note for `github.codespaces.getAccessToken` to work, you will need *"isInternal": true* flag in %UserProfile%\codespaces-settings.json
     
 ![image](https://user-images.githubusercontent.com/33612256/105910562-fbb0a100-5fdd-11eb-9878-31d30b215689.png)
@@ -70,7 +71,7 @@ Wait until all projects are loaded in the Omnisharp logs (If there is an error, 
 
 ![image](https://user-images.githubusercontent.com/33612256/101835693-01672b80-3af1-11eb-97d7-a5bda056f9d3.png)
 
-7. Begin coding with Intellisense! Via the source control panel you can see changes you've made in Cascade, vsclk-core, or this bootstrap repo.  Make commits how you normally for each individual repo.
+7. Begin coding with Intellisense! Via the source control panel you can see changes you've made in Cascade, vsclk-core, or this bootstrap repo. Cd into the vsclk-core or VSOnline folder and fetch and checkout your branch, or create a new branch. Make commits how you normally would for each individual repo.
 
 ![source-control](images/source-control.png)
 
