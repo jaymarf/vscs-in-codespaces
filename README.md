@@ -78,7 +78,7 @@ Wait until all projects are loaded in the Omnisharp logs (If there is an error, 
 The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and can still be accessed via your terminal at `~/workspace/vscs-in-codespaces/.codespaces`.  The `.codespaces` directory is added to your `$PATH`, letting you run any of our pre-build scripts in that directory from your terminal.
 
 
-## Running Your Devstamp
+## Running Your Devstamp in vscs-in-codespaces
 
 It is recommended to run your devstamp from this Codespace on web rather than desktop, as you'll need your local VS Code instance pointing to your devstamp to create devstamp Codespaces.
 
@@ -122,8 +122,3 @@ Your appsettings.json file in `~/CEDEev` will be updated with the correct values
 ## Running E2E Raw API Tests
 
 See the **Codespaces in Codespaces** section of the [Automated Test Runners wiki](https://github.com/microsoft/vssaas-planning/blob/master/docs/Design/automated-test-runners.md#codespaces-in-codespaces) for instructions on running the E2E tests in vscs-in-codespaces.
-
-## Known Issues and Planned Improvements
-* The backend service crashes sometimes. This seems to be an issue with the debugger, so running the services without the debugger (Ctrl + F5) should prevent this error. Please comment on this issue if the services continue to crash while running without the debugger [#1888](https://github.com/microsoft/vssaas-planning/issues/1888)
-
-![image](https://user-images.githubusercontent.com/33612256/102268767-b3d03180-3ee9-11eb-8d95-96f1860fcea7.png)
