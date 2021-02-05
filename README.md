@@ -1,6 +1,6 @@
 # Codespaces Services in Codespaces
 
-> _Please file an issue with the `dogfooding: vscs` tag in `microsoft/vssaas-planning` and tag [Aaron Paskin](https://github.com/anpaskin) and [Josh Spicer](https://github.com/joshspicer) with any issues._
+> _Please see the [discussion](https://github.com/microsoft/vssaas-planning/discussions/2548) and file an issue with the `dogfooding: vscs` tag in `microsoft/vssaas-planning` (tagging [Aaron Paskin](https://github.com/anpaskin) and [Josh Spicer](https://github.com/joshspicer)) with any issues._
 
 ## One-time setup
 1. If you do not have write-access to the `vsls-contrib/vscs-in-codespaces` repo, request it. Forking is an option, but you'd need to update your fork when changes are made in this branch.
@@ -82,7 +82,7 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 
 It is recommended to run your devstamp from this Codespace on web rather than desktop, as you'll need your local VS Code instance pointing to your devstamp to create devstamp Codespaces.
 
-:warning: Warning: Ngrok is not currently configured in this Codespace, so you should use your devstamp tunnel Azure Relay url instead, which you can set up using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel)
+:warning: Ngrok is not currently configured in this Codespace, so you should use your devstamp tunnel Azure Relay url instead, which you can set up using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel)
 
 1. If you didn't add the necessary secrets as described in the **One-time setup** section, you can manually edit your appsettings.json in the ~/CEDev directory. Otherwise, continue with step 2.
 
