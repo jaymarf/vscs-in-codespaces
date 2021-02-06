@@ -77,12 +77,11 @@ Wait until all projects are loaded in the Omnisharp logs (If there is an error, 
 
 The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and can still be accessed via your terminal at `~/workspace/vscs-in-codespaces/.codespaces`.  The `.codespaces` directory is added to your `$PATH`, letting you run any of our pre-build scripts in that directory from your terminal.
 
-
 ## Running Your Devstamp in vscs-in-codespaces
 
 These steps outline how to set up and run your devstamp from your vscs-in-codespaces Codespace. If you've used devstamp before, you may have already completed some of these steps. You may skip whichever steps you've already completed.
 
-1. Recommended: Connect to your vscs-in-codespaces Codespace on web by going to github.com/codespaces and selecting your Codespace.
+1. Recommended: Connect to your vscs-in-codespaces Codespace on web by going to [github.com/codespaces](github.com/codespaces) and selecting your Codespace.
    * You can run your devstamp from desktop VS Code, but you'll need to use a separate VS Code instance with different settings to create Codespaces that point to your devstamp (and thus have your changes). This might accidentally mess up the settings for your initial VS Code instance where you're running your devstamp.
 
 2. Set up your RelayTunnel hybrid URL using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel).
