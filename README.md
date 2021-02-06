@@ -94,7 +94,9 @@ These steps outline how to set up and run your devstamp from your vscs-in-codesp
 
 4. If you are testing a Cascade repo change (in the VSOnline folder of your Codespace), run `deploy-custom-agent.sh` in the VS Code terminal to build and upload an image with your changes for the devstamp to use. You can read more about what this script does in the [**Deploying a Custom Agent**](https://github.com/vsls-contrib/vscs-in-codespaces/blob/codespaces-service/README.md#deploying-a-custom-agent) section below.
 
-5. Open the Run tab (the play button in the left margin) and select FrontEnd+Backend API Launch in the dropdown (or the (No Build) option if you've already built the frontend and backend services, either manually or with a previous devstamp run). For best results, run the services without debugging by hitting ctrl + F5. If you need debugging you may try to run the services by clicking the green play button next to the task name in the Run tab, however you will likely get exceptions. See the [dogfooding/devstamp discussion](https://github.com/microsoft/vssaas-planning/discussions/2548), where we are tracking debugger in Codespaces issues.
+5. Open the Run tab (the play button in the left margin) and select FrontEnd+Backend API Launch in the dropdown (or the (No Build) option if you've already built the frontend and backend services, either manually or with a previous devstamp run).
+
+For best results, run the services without debugging by hitting ctrl + F5. If you need debugging you may try to run the services by clicking the green play button next to the task name in the Run tab, however you will likely get exceptions. See the [dogfooding/devstamp discussion](https://github.com/microsoft/vssaas-planning/discussions/2548), where we are tracking debugger in Codespaces issues.
    * If you are running the services with the prelaunch build (the task without (No Build)), the task may take a minute or two to launch. Once it starts, you will see the prelaunch build task begin with restores in your terminal
 
 ![image](https://user-images.githubusercontent.com/33612256/107100380-05e65280-67c9-11eb-872e-5253828d3b49.png).
