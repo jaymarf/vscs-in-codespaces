@@ -86,7 +86,7 @@ These steps outline how to set up and run your devstamp from your vscs-in-codesp
 
 2. Set up your RelayTunnel hybrid URL using the instructions [here](https://github.com/microsoft/vssaas-planning/wiki/Integrated-Devstamp-Tunnel).
 
-3. If you didn't add the necessary secrets as described in the **One-time setup** section, open ~/CEDev/appsettings.json. The terminal `code` command doesn't work in Codespaces ([issue](https://github.com/microsoft/vssaas-planning/issues/1920)), so the easiest way to open this file is to hit ctrl + p, type ~/CEDev/appsettings.json and select the file in the dropdown. Set the following values if they are not set:
+3. If you didn't add the necessary secrets as described in the [**One-time setup**](https://github.com/vsls-contrib/vscs-in-codespaces/blob/codespaces-service/README.md#one-time-setup) section, open ~/CEDev/appsettings.json. The terminal `code` command doesn't work in Codespaces ([issue](https://github.com/microsoft/vssaas-planning/issues/1920)), so the easiest way to open this file is to hit ctrl + p, type ~/CEDev/appsettings.json and select the file in the dropdown. Set the following values if they are not set:
    * `"developerAlias": {alias}`, where `alias` is the alias you used in your RelayTunnel hybrid URL (`https://codespaces.servicebus.windows.net/{alias}`)
    * `"appServicePrincipalClientSecret": ******`. where `******` is the value of the `app-sp-password` secret in the [`vsclk-online-dev-kv`](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/resource/subscriptions/86642df6-843e-4610-a956-fdd497102261/resourceGroups/vsclk-online-dev/providers/Microsoft.KeyVault/vaults/vsclk-online-dev-kv/secrets) KeyVault.
 
