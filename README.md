@@ -25,7 +25,7 @@
 
 That's it, you're ready to start creating Codespaces! :rocket:
 
-## Create a Codespace
+## Create your vscs-in-codespaces Codespace
 
 1. Ensure you are on the `codespaces-service` branch of the repo page at https://github.com/vsls-contrib/vscs-in-codespaces/tree/codespaces-service. If you are using a fork, start from your fork's repo page, not the `vsls-contrib/vscs-in-codespaces` repo.
 
