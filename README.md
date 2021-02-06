@@ -79,6 +79,8 @@ The `.codespaces` directory cloned from vscs-in-codespaces is not deleted, and c
 
 ## Running Your Devstamp in vscs-in-codespaces
 
+The end-to-end developer stamp allows you to exercise the client(s), frontend/backend webservices, and the vso cli. This is a useful tool for anyone who is developing features which span the above codebases. It provides isolated databases, azure resource groups, blob storage etc. This is a hybrid development environment. Real resources are created in Azure, despite running the web services locally.
+
 These steps outline how to set up and run your devstamp from your vscs-in-codespaces Codespace. If you've used devstamp before, you may have already completed some of these steps. You may skip whichever steps you've already completed.
 
 1. Recommended: Connect to your vscs-in-codespaces Codespace on web by going to [github.com/codespaces](github.com/codespaces) and selecting your Codespace.
