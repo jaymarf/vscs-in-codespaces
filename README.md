@@ -147,7 +147,7 @@ This will tell your local VS Code instance to point to your devstamp so you can 
   
   There are a few reasons why you may be getting this.
   
-  a. Make sure you have the right plan copied to your dev stamp db. If you are seeing "Forbidden" error message from Diagnostic page this can be the reason, wrong plan. Follow [these steps](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md#copying-your-github-codespaces-plan) to find and copy your plan.
+  a. Make sure you have the right plan copied to your dev stamp db. If you are seeing "Forbidden" error message or some other create error from Diagnostic page this can be the reason, wrong plan. Follow [these steps](https://github.com/microsoft/vssaas-planning/blob/master/docs/Devstamp/e2e-devstamp.md#copying-your-github-codespaces-plan) to find and copy the plan you need.
   
 :warning: Currently each combination of billable repo owner + VSCS target (local/dev, ppe, prod, etc.) + region has a unique plan, so depending on the repo from which you're trying to create a devstamp Codespace, you may need to copy over an additional plan.
   
