@@ -28,6 +28,7 @@
 
 5. Download the `nginx` folder from this repo, open it in vscode and run `./start.sh` script (`./start.ps1` for Windows).
 
+In case you get an error for Execution policy, run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` from admin powershell window. 
 ![image](https://user-images.githubusercontent.com/1478800/100968925-1dfad680-34e7-11eb-9f9c-62801235ce76.png)
 
 6. Go to `https://github.com/codespaces` and create a repo with `local` VSCS target.
